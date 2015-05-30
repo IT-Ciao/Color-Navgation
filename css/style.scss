@@ -1,0 +1,107 @@
+/**
+	base
+**/
+
+h1,h2,h3,h4,h5,h6,div,span,a,b,strong,p,label,input,select,textarea,td,th,button,li{
+	font-family:微軟正黑體;
+}
+
+.container{
+	margin-top: 60px;
+}
+
+.logout-btn{
+	cursor: pointer;
+}
+
+/**
+	nav
+**/
+$theme-bk-color:#77acd9;
+$theme-text-color:darken($theme-bk-color,40%);
+$nav-height:60px;
+$nav-padding:20px;
+
+$mobile-nav-bk:darken($theme-bk-color,20%);
+$nav-li-bk:lighten($theme-bk-color,5%);
+@mixin set-nav{
+	position: fixed;	top: 0;
+	width: 100%;
+	height: $nav-height;
+	font-size: 16px;	color: $theme-text-color;
+	z-index: 99;
+
+	.nav-title{
+		color: white;
+		background-color: $mobile-nav-bk;
+		line-height: $nav-height;
+		padding: 0 $nav-padding 0 $nav-padding;
+	}
+
+	.nav-list{
+		padding: 0;
+		display: none;
+		
+		li{
+			background-color: $nav-li-bk;
+			line-height: $nav-height;
+			list-style: none;
+
+			&[class="active"]{
+				background-color: darken($theme-bk-color,10%);
+			}
+
+			a{
+				padding-left: $nav-padding;
+				color:$theme-text-color;	text-decoration: none;
+				display: block;
+
+				&:hover{
+					color:white;
+				}
+			}
+		}
+	}
+
+	.nav-button-box{
+		position: absolute;
+		top: 0;		right: $nav-padding;
+
+		height: $nav-height;	line-height: $nav-height;
+		font-size: 20px;
+
+		cursor: pointer;
+	}
+}
+
+.nav-mobile{
+	@include set-nav;
+}
+
+.nav-desktop{
+	@include set-nav;
+	
+	background-color: $nav-li-bk;
+	font-size: 18px;
+
+	.nav-title{
+		float: left;
+		background-color: lighten($theme-bk-color,5%);
+	}
+
+	.nav-list{
+		display: block;
+		
+		li{
+			float: left;
+			text-align: center;
+			padding: 0 $nav-padding 0 $nav-padding;
+			width: auto;
+
+			a{
+				padding: 0;
+				display: block;
+			}
+		}
+	}
+}
